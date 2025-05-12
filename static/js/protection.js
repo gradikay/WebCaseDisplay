@@ -19,9 +19,8 @@
         const iframeWrapper = document.getElementById('iframe-wrapper');
         
         if (iframeWrapper) {
-            // Get the iframe and overlay elements
+            // Get the iframe element
             const iframe = iframeWrapper.querySelector('iframe');
-            const overlay = iframeWrapper.querySelector('.iframe-overlay');
             
             // Apply protections
             preventRightClick();
@@ -30,7 +29,7 @@
             preventDragAndDrop();
             
             // Enable iframe interaction but maintain protection
-            enableIframeInteraction(iframeWrapper, iframe, overlay);
+            enableIframeInteraction(iframeWrapper, iframe);
         }
     }
 
@@ -267,28 +266,37 @@
     /**
      * Enable interaction with the iframe while maintaining protection
      */
-    function enableIframeInteraction(wrapper, iframe, overlay) {
+    function enableIframeInteraction(wrapper, iframe) {
         // Add the protected class to enable interaction
         wrapper.classList.add('protected');
         
-        // Set the iframe to be fully interactive (websites will load and function normally)
+        // Set the iframe to be fully interactive
         iframe.style.pointerEvents = 'auto';
         
-        // Add advanced dev tools detection and prevention
-        const devToolsDetector = document.createElement('div');
-        devToolsDetector.style.display = 'none';
-        document.body.appendChild(devToolsDetector);
+        // Ensure the iframe can receive focus for keyboard interactions
+        iframe.setAttribute('tabindex', '0');
         
-        // Detect DevTools via debugger
-        function detectDevTools() {
-            const startTime = new Date();
-            debugger;
-            const endTime = new Date();
-            const timeDiff = endTime - startTime;
-            
-            if (timeDiff > 100) {
-                showDevToolsWarning();
+        // Listen for focus events
+        iframe.addEventListener('focus', function() {
+            console.log('Iframe focused for interaction');
+        });
+        
+        // Detect DevTools via debugger - only if not in development mode
+        if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+            function detectDevTools() {
+                const startTime = new Date();
+                debugger;
+                const endTime = new Date();
+                const timeDiff = endTime - startTime;
+                
+                if (timeDiff > 100) {
+                    showDevToolsWarning();
+                }
             }
+            
+            // Run detector periodically but at less frequent intervals
+            // to avoid affecting performance
+            setInterval(detectDevTools, 2000);
         }
         
         function showDevToolsWarning() {
@@ -309,17 +317,10 @@
             
             // Remove after a few seconds
             setTimeout(() => {
-                document.body.removeChild(warningEl);
+                if (document.body.contains(warningEl)) {
+                    document.body.removeChild(warningEl);
+                }
             }, 3000);
         }
-        
-        // Run detector periodically
-        setInterval(detectDevTools, 1000);
-        
-        // For wheel events (scrolling)
-        overlay.addEventListener('wheel', function(e) {
-            // Let the scroll pass through to the iframe
-            // This allows normal scrolling behavior
-        });
     }
 })();
