@@ -7,9 +7,9 @@
 const SHOWCASE_WEBSITES = [
     {
         "id": 1,
-        "title": "MDN Web Docs",
-        "description": "Comprehensive resources for developers by Mozilla",
-        "url": "https://developer.mozilla.org/en-US/",
+        "title": "Island Vibes Kitchen",
+        "description": "Complete Restaurant Website Template with Jamaican/Caribbean Theme",
+        "url": "gradikay.github.io/IslandVibesKitchen/",
         "thumbnail": "https://via.placeholder.com/600x400/0984E3/FFFFFF?text=MDN+Web+Docs",
         "metadata": {
             "created": "February 23, 2005",
