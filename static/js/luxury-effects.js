@@ -3,22 +3,28 @@
  * Adds elegant rain animation and shimmer effects
  */
 
-(function() {
-    'use strict';
+// Initialize immediately
+window.onload = function() {
+    console.log('Initializing luxury effects');
+    initializeLuxuryEffects();
+};
 
-    // Initialize when DOM is fully loaded
-    document.addEventListener('DOMContentLoaded', function() {
-        initializeLuxuryEffects();
-    });
+// Also try DOMContentLoaded as a backup
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM Content Loaded - initializing luxury effects');
+    initializeLuxuryEffects();
+});
 
-    /**
-     * Initialize luxury visual effects
-     */
-    function initializeLuxuryEffects() {
-        createRainContainer();
-        createRainDrops();
-        trackMouseForGlowEffect();
-    }
+/**
+ * Initialize luxury visual effects
+ */
+function initializeLuxuryEffects() {
+    console.log('Starting luxury effects initialization');
+    createRainContainer();
+    createRainDrops();
+    trackMouseForGlowEffect();
+    console.log('Luxury effects initialized');
+}
 
     /**
      * Create the container for rain animation
