@@ -50,6 +50,14 @@
     padding: 0;
 }
 
+.credit {
+    display: block;
+    font-family: 'Pacifico', cursive;
+    font-size: 1.1em;
+    color: var(--color-accent);
+    margin-top: 8px;
+}
+
 html {
     scroll-behavior: smooth;
 }
