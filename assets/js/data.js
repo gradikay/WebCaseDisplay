@@ -10,7 +10,7 @@ const SHOWCASE_WEBSITES = [
         "title": "Island Vibes Kitchen",
         "description": "Complete Restaurant Website Template with Jamaican/Caribbean Theme",
         "url": "gradikay.github.io/IslandVibesKitchen/",
-        "thumbnail": "https://via.placeholder.com/600x400/0984E3/FFFFFF?text=MDN+Web+Docs",
+        "thumbnail": "assets/images/IslandVibesKitchen-thumbnail.png",
         "metadata": {
             "created": "February 23, 2005",
             "technologies": ["HTML", "CSS", "JavaScript", "React", "Node.js"],
@@ -26,7 +26,7 @@ const SHOWCASE_WEBSITES = [
         "title": "Wikipedia",
         "description": "Online encyclopedia with millions of articles",
         "url": "https://en.wikipedia.org/wiki/Main_Page",
-        "thumbnail": "https://via.placeholder.com/600x400/2D3436/FFFFFF?text=Wikipedia",
+        "thumbnail": "assets/images/thumbnails/wikipedia.svg",
         "metadata": {
             "created": "January 15, 2001",
             "technologies": ["PHP", "MySQL", "JavaScript", "MediaWiki"],
@@ -42,7 +42,7 @@ const SHOWCASE_WEBSITES = [
         "title": "CSS-Tricks",
         "description": "Tips, tricks, and techniques for web developers",
         "url": "https://css-tricks.com/",
-        "thumbnail": "https://via.placeholder.com/600x400/636E72/FFFFFF?text=CSS-Tricks",
+        "thumbnail": "assets/images/thumbnails/css-tricks.svg",
         "metadata": {
             "created": "July 4, 2007",
             "technologies": ["WordPress", "CSS", "HTML", "JavaScript", "SVG"],
@@ -58,7 +58,7 @@ const SHOWCASE_WEBSITES = [
         "title": "GitHub",
         "description": "Software development platform for open source collaboration",
         "url": "https://github.com/",
-        "thumbnail": "https://via.placeholder.com/600x400/0984E3/FFFFFF?text=GitHub",
+        "thumbnail": "assets/images/thumbnails/github.svg",
         "metadata": {
             "created": "April 10, 2008",
             "technologies": ["Ruby on Rails", "Erlang", "Go", "React", "GraphQL"],
