@@ -215,7 +215,6 @@ main {
     height: 100%;
     border: 0;
     background-color: #fff;
-    pointer-events: none;
 }
 
 .iframe-overlay {
@@ -226,7 +225,6 @@ main {
     height: 100%;
     background-color: transparent;
     user-select: none;
-    pointer-events: none;
     z-index: 10;
 }
 

@@ -84,7 +84,7 @@
 
     /**
      * Attempt to disable developer tools access
-     * Note: This is not foolproof but adds a layer of difficulty
+     * Note: This is not foolproof but adds multiple layers of protection
      */
     function disableDevTools() {
         // Listen for keyboard shortcuts commonly used to open dev tools
@@ -92,6 +92,7 @@
             // F12 key
             if (e.keyCode === 123) {
                 e.preventDefault();
+                showCopyProtectionMessage();
                 return false;
             }
             
@@ -99,6 +100,7 @@
             if ((e.ctrlKey && e.shiftKey && e.keyCode === 73) || 
                 (e.metaKey && e.altKey && e.keyCode === 73)) {
                 e.preventDefault();
+                showCopyProtectionMessage();
                 return false;
             }
             
@@ -106,6 +108,7 @@
             if ((e.ctrlKey && e.shiftKey && e.keyCode === 74) || 
                 (e.metaKey && e.altKey && e.keyCode === 74)) {
                 e.preventDefault();
+                showCopyProtectionMessage();
                 return false;
             }
             
@@ -113,6 +116,7 @@
             if ((e.ctrlKey && e.shiftKey && e.keyCode === 67) || 
                 (e.metaKey && e.altKey && e.keyCode === 67)) {
                 e.preventDefault();
+                showCopyProtectionMessage();
                 return false;
             }
             
@@ -120,58 +124,98 @@
             if ((e.ctrlKey && e.keyCode === 83) || 
                 (e.metaKey && e.keyCode === 83)) {
                 e.preventDefault();
+                showCopyProtectionMessage();
                 return false;
             }
         });
         
-        // Attempt to detect devtools opening
-        let devtoolsOpen = false;
-        
-        const threshold = 160; // Threshold for width/height check
-        
-        function checkDevTools() {
+        // Advanced DevTools detection - multiple techniques
+        // 1. Window size difference detection
+        function checkWindowSizeDevTools() {
+            const threshold = 160;
             const widthThreshold = window.outerWidth - window.innerWidth > threshold;
             const heightThreshold = window.outerHeight - window.innerHeight > threshold;
             
             if (widthThreshold || heightThreshold) {
-                if (!devtoolsOpen) {
-                    devtoolsOpen = true;
-                    
-                    // Add a dark overlay to the page when devtools is detected
-                    const overlayEl = document.createElement('div');
-                    overlayEl.id = 'devtools-blocker';
-                    overlayEl.style.position = 'fixed';
-                    overlayEl.style.top = '0';
-                    overlayEl.style.left = '0';
-                    overlayEl.style.width = '100%';
-                    overlayEl.style.height = '100%';
-                    overlayEl.style.background = 'rgba(45, 52, 54, 0.9)';
-                    overlayEl.style.zIndex = '999999';
-                    overlayEl.style.display = 'flex';
-                    overlayEl.style.alignItems = 'center';
-                    overlayEl.style.justifyContent = 'center';
-                    overlayEl.style.color = 'white';
-                    overlayEl.style.fontSize = '18px';
-                    overlayEl.style.textAlign = 'center';
-                    overlayEl.style.padding = '20px';
-                    
-                    overlayEl.innerHTML = '<div><h2>Developer Tools Detected</h2><p>This site is protected against inspection.</p></div>';
-                    
-                    document.body.appendChild(overlayEl);
-                }
-            } else {
-                if (devtoolsOpen) {
-                    devtoolsOpen = false;
-                    const blocker = document.getElementById('devtools-blocker');
-                    if (blocker) {
-                        document.body.removeChild(blocker);
-                    }
-                }
+                showDevToolsWarning();
             }
         }
         
-        // Check periodically for dev tools
-        setInterval(checkDevTools, 1000);
+        // 2. Console clear override detection
+        const consoleProperties = [
+            'debug', 'error', 'info', 'log', 'warn', 'dir', 'dirxml', 
+            'table', 'trace', 'group', 'groupCollapsed', 'groupEnd', 
+            'clear', 'count', 'countReset', 'assert', 'profile', 'profileEnd', 
+            'time', 'timeLog', 'timeEnd', 'timeStamp'
+        ];
+        
+        // Override console methods to detect usage
+        consoleProperties.forEach(prop => {
+            if (console[prop]) {
+                const originalMethod = console[prop];
+                console[prop] = function() {
+                    if (prop === 'clear') {
+                        showDevToolsWarning();
+                    }
+                    return originalMethod.apply(console, arguments);
+                };
+            }
+        });
+        
+        // 3. Function.prototype.toString detection
+        const originalToString = Function.prototype.toString;
+        Object.defineProperty(Function.prototype, 'toString', {
+            value: function() {
+                try {
+                    // This will throw for native methods but not for our own functions
+                    // Can be used to detect DevTools inspection
+                    if (this === Function.prototype.toString) {
+                        showDevToolsWarning();
+                    }
+                } catch (e) {}
+                return originalToString.apply(this, arguments);
+            },
+            writable: true
+        });
+        
+        function showDevToolsWarning() {
+            const overlayEl = document.createElement('div');
+            overlayEl.id = 'devtools-blocker';
+            overlayEl.style.position = 'fixed';
+            overlayEl.style.top = '0';
+            overlayEl.style.left = '0';
+            overlayEl.style.width = '100%';
+            overlayEl.style.height = '100%';
+            overlayEl.style.background = 'rgba(45, 52, 54, 0.95)';
+            overlayEl.style.zIndex = '9999999';
+            overlayEl.style.display = 'flex';
+            overlayEl.style.alignItems = 'center';
+            overlayEl.style.justifyContent = 'center';
+            overlayEl.style.color = 'white';
+            overlayEl.style.fontSize = '18px';
+            overlayEl.style.textAlign = 'center';
+            overlayEl.style.padding = '20px';
+            
+            overlayEl.innerHTML = '<div><h2>Developer Tools Detected</h2><p>This site is protected against inspection and content copying.</p></div>';
+            
+            // Remove any existing overlay
+            const existingOverlay = document.getElementById('devtools-blocker');
+            if (existingOverlay) {
+                document.body.removeChild(existingOverlay);
+            }
+            
+            document.body.appendChild(overlayEl);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                if (document.body.contains(overlayEl)) {
+                    document.body.removeChild(overlayEl);
+                }
+            }, 3000);
+        }
+        
+        // Check periodically for dev tools using multiple techniques
+        setInterval(checkWindowSizeDevTools, 1000);
     }
 
     /**
@@ -227,46 +271,55 @@
         // Add the protected class to enable interaction
         wrapper.classList.add('protected');
         
-        // Create a transparent overlay that passes mouse events to iframe
-        // but prevents direct interaction with iframe content
-        overlay.addEventListener('mousemove', function(e) {
-            // Calculate position within iframe
-            const rect = iframe.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            // Create a synthetic click event that's passed to the iframe
-            // This allows interaction without direct access
-            const clickEvent = new MouseEvent('click', {
-                bubbles: true,
-                cancelable: true,
-                view: window,
-                clientX: x,
-                clientY: y
-            });
-            
-            // We're only simulating the event, not actually passing it
-            // This gives the appearance of interaction
-            
-            // For scrolling, we'll need to manually handle that
-            overlay.addEventListener('wheel', function(e) {
-                // Calculate scroll amount
-                const scrollY = iframe.contentWindow.scrollY + e.deltaY;
-                
-                // Apply scroll to iframe
-                iframe.contentWindow.scrollTo(0, scrollY);
-                
-                // Prevent default to avoid page scroll
-                e.preventDefault();
-            });
-        });
+        // Set the iframe to be fully interactive (websites will load and function normally)
+        iframe.style.pointerEvents = 'auto';
         
-        // Handle clicks on the overlay
-        overlay.addEventListener('click', function(e) {
-            // We're not actually passing clicks to avoid direct manipulation
-            // but giving the appearance of interaction
-            e.preventDefault();
-            e.stopPropagation();
+        // Add advanced dev tools detection and prevention
+        const devToolsDetector = document.createElement('div');
+        devToolsDetector.style.display = 'none';
+        document.body.appendChild(devToolsDetector);
+        
+        // Detect DevTools via debugger
+        function detectDevTools() {
+            const startTime = new Date();
+            debugger;
+            const endTime = new Date();
+            const timeDiff = endTime - startTime;
+            
+            if (timeDiff > 100) {
+                showDevToolsWarning();
+            }
+        }
+        
+        function showDevToolsWarning() {
+            const warningEl = document.createElement('div');
+            warningEl.style.position = 'fixed';
+            warningEl.style.top = '0';
+            warningEl.style.left = '0';
+            warningEl.style.width = '100%';
+            warningEl.style.height = '100%';
+            warningEl.style.backgroundColor = 'rgba(0,0,0,0.9)';
+            warningEl.style.color = 'white';
+            warningEl.style.padding = '50px';
+            warningEl.style.textAlign = 'center';
+            warningEl.style.zIndex = '9999999';
+            warningEl.style.fontSize = '24px';
+            warningEl.innerHTML = '<h2>Developer Tools Detected</h2><p>This website is protected against inspection and copying.</p>';
+            document.body.appendChild(warningEl);
+            
+            // Remove after a few seconds
+            setTimeout(() => {
+                document.body.removeChild(warningEl);
+            }, 3000);
+        }
+        
+        // Run detector periodically
+        setInterval(detectDevTools, 1000);
+        
+        // For wheel events (scrolling)
+        overlay.addEventListener('wheel', function(e) {
+            // Let the scroll pass through to the iframe
+            // This allows normal scrolling behavior
         });
     }
 })();

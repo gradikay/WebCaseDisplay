@@ -13,31 +13,31 @@ app.secret_key = os.environ.get("SESSION_SECRET")
 SHOWCASE_WEBSITES = [
     {
         "id": 1,
-        "title": "Website 1",
-        "description": "A modern e-commerce platform with minimalist design",
-        "url": "https://www.example.com",
-        "thumbnail": "https://via.placeholder.com/600x400/0984E3/FFFFFF?text=Website+1"
+        "title": "MDN Web Docs",
+        "description": "Comprehensive resources for developers by Mozilla",
+        "url": "https://developer.mozilla.org/en-US/",
+        "thumbnail": "https://via.placeholder.com/600x400/0984E3/FFFFFF?text=MDN+Web+Docs"
     },
     {
         "id": 2,
-        "title": "Website 2",
-        "description": "Professional portfolio site with advanced animations",
-        "url": "https://www.example.org",
-        "thumbnail": "https://via.placeholder.com/600x400/2D3436/FFFFFF?text=Website+2"
+        "title": "Wikipedia",
+        "description": "Online encyclopedia with millions of articles",
+        "url": "https://en.wikipedia.org/wiki/Main_Page",
+        "thumbnail": "https://via.placeholder.com/600x400/2D3436/FFFFFF?text=Wikipedia"
     },
     {
         "id": 3,
-        "title": "Website 3",
-        "description": "Responsive blog with clean typography",
-        "url": "https://www.example.net",
-        "thumbnail": "https://via.placeholder.com/600x400/636E72/FFFFFF?text=Website+3"
+        "title": "CSS-Tricks",
+        "description": "Tips, tricks, and techniques for web developers",
+        "url": "https://css-tricks.com/",
+        "thumbnail": "https://via.placeholder.com/600x400/636E72/FFFFFF?text=CSS-Tricks"
     },
     {
         "id": 4,
-        "title": "Website 4",
-        "description": "Interactive dashboard with data visualization",
-        "url": "https://www.example.io",
-        "thumbnail": "https://via.placeholder.com/600x400/0984E3/FFFFFF?text=Website+4"
+        "title": "GitHub",
+        "description": "Software development platform for open source collaboration",
+        "url": "https://github.com/",
+        "thumbnail": "https://via.placeholder.com/600x400/0984E3/FFFFFF?text=GitHub"
     }
 ]
 

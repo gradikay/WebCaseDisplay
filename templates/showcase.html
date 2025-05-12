@@ -36,11 +36,11 @@
                     src="{{ website.url }}" 
                     title="{{ website.title }}"
                     class="website-frame" 
-                    sandbox="allow-scripts allow-same-origin" 
+                    sandbox="allow-scripts allow-same-origin allow-forms allow-popups" 
                     referrerpolicy="no-referrer"
                     loading="lazy">
                 </iframe>
-                <div class="iframe-overlay"></div>
+                <div class="iframe-overlay" id="iframe-overlay"></div>
             </div>
             <div class="iframe-notice">
                 <p>This content is protected. Right-click, copying, and inspector tools have been disabled to preserve creator's rights.</p>
