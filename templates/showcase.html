@@ -29,6 +29,87 @@
         <section class="showcase-details">
             <h1>{{ website.title }}</h1>
             <p class="description">{{ website.description }}</p>
+            
+            <!-- Website Metadata Display -->
+            <div class="metadata-container">
+                <div class="metadata-header">
+                    <h3>Website Metadata</h3>
+                    <span class="created-date">Created: {{ website.metadata.created }}</span>
+                </div>
+                
+                <div class="metadata-grid">
+                    <!-- Technologies Used -->
+                    <div class="metadata-item">
+                        <div class="metadata-label">Technologies</div>
+                        <div class="tech-stack">
+                            {% for tech in website.metadata.technologies %}
+                                <span class="tech-tag">{{ tech }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    
+                    <!-- Organization -->
+                    <div class="metadata-item">
+                        <div class="metadata-label">Organization</div>
+                        <div class="metadata-value">{{ website.metadata.organization }}</div>
+                    </div>
+                    
+                    <!-- Website Type -->
+                    <div class="metadata-item">
+                        <div class="metadata-label">Type</div>
+                        <div class="metadata-value">{{ website.metadata.type }}</div>
+                    </div>
+                    
+                    <!-- Monthly Visitors -->
+                    <div class="metadata-item">
+                        <div class="metadata-label">Monthly Visitors</div>
+                        <div class="metadata-value">{{ website.metadata.monthly_visitors }}</div>
+                    </div>
+                    
+                    <!-- Conditional metadata items -->
+                    {% if website.metadata.get('languages_supported') %}
+                    <div class="metadata-item">
+                        <div class="metadata-label">Languages Supported</div>
+                        <div class="metadata-value">{{ website.metadata.languages_supported }}</div>
+                    </div>
+                    {% endif %}
+                    
+                    {% if website.metadata.get('articles') %}
+                    <div class="metadata-item">
+                        <div class="metadata-label">Articles</div>
+                        <div class="metadata-value">{{ website.metadata.articles }}</div>
+                    </div>
+                    {% endif %}
+                    
+                    {% if website.metadata.get('repositories') %}
+                    <div class="metadata-item">
+                        <div class="metadata-label">Repositories</div>
+                        <div class="metadata-value">{{ website.metadata.repositories }}</div>
+                    </div>
+                    {% endif %}
+                    
+                    {% if website.metadata.get('active_users') %}
+                    <div class="metadata-item">
+                        <div class="metadata-label">Active Users</div>
+                        <div class="metadata-value">{{ website.metadata.active_users }}</div>
+                    </div>
+                    {% endif %}
+                    
+                    {% if website.metadata.get('focus') %}
+                    <div class="metadata-item">
+                        <div class="metadata-label">Focus</div>
+                        <div class="metadata-value">{{ website.metadata.focus }}</div>
+                    </div>
+                    {% endif %}
+                    
+                    {% if website.metadata.get('last_updated') %}
+                    <div class="metadata-item">
+                        <div class="metadata-label">Last Updated</div>
+                        <div class="metadata-value">{{ website.metadata.last_updated }}</div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
         </section>
 
         <section class="website-frame-container">

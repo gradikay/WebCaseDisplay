@@ -37,8 +37,19 @@
                         <img src="{{ website.thumbnail }}" alt="{{ website.title }}">
                     </div>
                     <div class="card-content">
-                        <h3>{{ website.title }}</h3>
+                        <div class="card-header">
+                            <h3>{{ website.title }}</h3>
+                            <span class="card-date">{{ website.metadata.created.split(' ')[0] }}</span>
+                        </div>
                         <p>{{ website.description }}</p>
+                        <div class="card-tech-preview">
+                            {% for tech in website.metadata.technologies[:3] %}
+                                <span class="tech-badge">{{ tech }}</span>
+                            {% endfor %}
+                            {% if website.metadata.technologies|length > 3 %}
+                                <span class="tech-badge more">+{{ website.metadata.technologies|length - 3 }}</span>
+                            {% endif %}
+                        </div>
                     </div>
                 </a>
             </div>
