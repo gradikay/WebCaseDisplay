@@ -1,16 +1,10 @@
-import os
-import logging
-from flask import Flask, render_template, request, redirect, url_for
+/**
+ * Website Showcase Platform - Data
+ * Contains all website information and metadata
+ */
 
-# Configure logging
-logging.basicConfig(level=logging.DEBUG)
-
-# Initialize Flask app
-app = Flask(__name__)
-app.secret_key = os.environ.get("SESSION_SECRET")
-
-# Sample showcase websites with detailed metadata
-SHOWCASE_WEBSITES = [
+// Sample showcase websites with detailed metadata
+const SHOWCASE_WEBSITES = [
     {
         "id": 1,
         "title": "MDN Web Docs",
@@ -75,29 +69,4 @@ SHOWCASE_WEBSITES = [
             "active_users": "83 million+"
         }
     }
-]
-
-
-@app.route('/')
-def index():
-    """Render the homepage with website showcases"""
-    return render_template('index.html', websites=SHOWCASE_WEBSITES)
-
-
-@app.route('/showcase/<int:website_id>')
-def showcase(website_id):
-    """Display a specific website in an iframe with protection"""
-    website = None
-    for site in SHOWCASE_WEBSITES:
-        if site['id'] == website_id:
-            website = site
-            break
-    
-    if website is None:
-        return redirect(url_for('index'))
-    
-    return render_template('showcase.html', website=website)
-
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+];

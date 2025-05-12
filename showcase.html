@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Showcase</title>
+    <link rel="stylesheet" href="assets/css/normalize.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/rain.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="showcase-page">
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/images/logo.svg" alt="Website Showcase Platform">
+                </a>
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="back-button">← Back to Gallery</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="showcase-details" id="showcase-details">
+            <!-- Website details will be dynamically inserted here via JavaScript -->
+        </section>
+
+        <section class="website-frame-container">
+            <div class="iframe-protector" id="iframe-wrapper">
+                <iframe 
+                    id="website-frame"
+                    title="Website Showcase"
+                    class="website-frame" 
+                    sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals allow-top-navigation" 
+                    referrerpolicy="no-referrer"
+                    loading="lazy">
+                </iframe>
+            </div>
+            <div class="iframe-notice">
+                <p>This content is protected. Right-click, copying, and inspector tools have been disabled to preserve creator's rights.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Website Showcase Platform. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/protection.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/luxury-effects.js"></script>
+    <script src="assets/js/rain-direct.js"></script>
+</body>
+</html>
