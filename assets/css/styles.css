@@ -369,6 +369,11 @@ img {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     background-color: var(--color-background);
     height: 600px; /* Fixed height, adjust as needed */
+    resize: horizontal; /* Allow horizontal resizing */
+    min-width: 320px; /* Minimum width */
+    max-width: 100%; /* Maximum width */
+    overflow: auto; /* Show scrollbars when needed */
+    isolation: isolate; /* Create a new stacking context to block effects */
 }
 
 .website-frame {
@@ -376,6 +381,8 @@ img {
     height: 100%;
     border: none;
     background-color: white;
+    z-index: 1; /* Ensure iframe is above effects */
+    position: relative; /* Create stacking context */
 }
 
 .iframe-notice {

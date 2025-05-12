@@ -125,11 +125,27 @@
         
         // Track mouse movement
         document.addEventListener('mousemove', function(e) {
-            glow.style.left = `${e.clientX}px`;
-            glow.style.top = `${e.clientY}px`;
+            // Get the element that the mouse is over
+            const elementMouseIsOver = document.elementFromPoint(e.clientX, e.clientY);
             
-            // Show glow
-            glow.classList.add('visible');
+            // Check if mouse is over the iframe or its container
+            const isOverIframe = elementMouseIsOver && (
+                elementMouseIsOver.tagName === 'IFRAME' || 
+                elementMouseIsOver.id === 'iframe-wrapper' || 
+                elementMouseIsOver.closest('#iframe-wrapper')
+            );
+            
+            // Only show glow when not over iframe
+            if (!isOverIframe) {
+                glow.style.left = `${e.clientX}px`;
+                glow.style.top = `${e.clientY}px`;
+                
+                // Show glow
+                glow.classList.add('visible');
+            } else {
+                // Hide glow when over iframe
+                glow.classList.remove('visible');
+            }
         });
         
         // Hide glow when mouse is inactive

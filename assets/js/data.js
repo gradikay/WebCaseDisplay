@@ -9,16 +9,13 @@ const SHOWCASE_WEBSITES = [
         "id": 1,
         "title": "Island Vibes Kitchen",
         "description": "Complete Restaurant Website Template with Jamaican/Caribbean Theme",
-        "url": "gradikay.github.io/IslandVibesKitchen/",
+        "url": "https://gradikay.github.io/IslandVibesKitchen/",
         "thumbnail": "assets/images/IslandVibesKitchen-thumbnail.png",
         "metadata": {
-            "created": "February 23, 2005",
-            "technologies": ["HTML", "CSS", "JavaScript", "React", "Node.js"],
-            "organization": "Mozilla Foundation",
+            "created": "May 10, 2025",
+            "technologies": ["HTML", "CSS", "JavaScript"],
+            "organization": "Artivico",
             "type": "Documentation",
-            "monthly_visitors": "25 million+",
-            "last_updated": "Daily updates",
-            "languages_supported": 10
         }
     },
     {
@@ -44,7 +41,7 @@ const SHOWCASE_WEBSITES = [
         "url": "https://css-tricks.com/",
         "thumbnail": "assets/images/thumbnails/css-tricks.svg",
         "metadata": {
-            "created": "July 4, 2007",
+            "created": "May 10, 2025",
             "technologies": ["WordPress", "CSS", "HTML", "JavaScript", "SVG"],
             "organization": "DigitalOcean",
             "type": "Web Development Blog",
