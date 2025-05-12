@@ -7,11 +7,16 @@
     --text-color: #2D3436;
     --accent-color: #0984E3;
     --accent-gradient: linear-gradient(135deg, #0984E3, #74b9ff);
+    --gold-gradient: linear-gradient(135deg, #f1c40f, #e67e22);
+    --luxury-gradient: linear-gradient(135deg, #6c5ce7, #0984E3);
     --secondary-accent: #6c5ce7;
+    --gold-accent: #f1c40f;
     --success-color: #00b894;
     --spacing: 24px;
     --border-radius: 12px;
     --shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    --luxury-shadow: 0 15px 40px rgba(108, 92, 231, 0.15);
+    --gold-shadow: 0 10px 30px rgba(241, 196, 15, 0.15);
     --btn-shadow: 0 4px 12px rgba(9, 132, 227, 0.3);
     --card-hover-transform: translateY(-8px);
     --transition-speed: 0.3s ease;
@@ -35,10 +40,11 @@ body {
     padding: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-image: radial-gradient(circle at 25px 25px, rgba(9, 132, 227, 0.05) 2%, transparent 0%),
-                     radial-gradient(circle at 75px 75px, rgba(108, 92, 231, 0.05) 2%, transparent 0%);
-    background-size: 100px 100px;
+    position: relative;
+    overflow-x: hidden;
+    background: linear-gradient(to bottom, rgba(9, 132, 227, 0.03), rgba(108, 92, 231, 0.02));
     background-attachment: fixed;
+    min-height: 100vh;
 }
 
 img {
@@ -206,7 +212,7 @@ main {
     left: 0;
     right: 0;
     height: 4px;
-    background: var(--accent-gradient);
+    background: var(--luxury-gradient);
     transform: scaleX(0);
     transform-origin: 0 0;
     transition: transform 0.5s ease;
@@ -215,6 +221,10 @@ main {
 
 .card:hover:before {
     transform: scaleX(1);
+}
+
+.card:nth-child(odd):before {
+    background: var(--gold-gradient);
 }
 
 .card-image {
