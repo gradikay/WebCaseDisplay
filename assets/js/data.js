@@ -46,18 +46,15 @@ const SHOWCASE_WEBSITES = [
     },
     {
         "id": 4,
-        "title": "GitHub",
-        "description": "Software development platform for open source collaboration",
-        "url": "https://github.com/",
-        "thumbnail": "assets/images/thumbnails/github.svg",
+        "title": "Sparkle Nails",
+        "description": "Complete Nail Salon Website Template with red and pink Theme",
+        "url": "https://gradikay.github.io/SparkleNails/",
+            "thumbnail": "assets/images/sparklenailshome.webp",
         "metadata": {
-            "created": "April 10, 2008",
-            "technologies": ["Ruby on Rails", "Erlang", "Go", "React", "GraphQL"],
-            "organization": "Microsoft (acquired in 2018)",
-            "type": "Version Control & Collaboration",
-            "monthly_visitors": "140 million+",
-            "repositories": "200 million+",
-            "active_users": "83 million+"
+            "created": "May 19, 2025",
+                "technologies": ["HTML", "CSS", "JavaScript"],
+                "organization": "Artivico",
+                "type": "Nail Salon"
         }
     }
 ];
