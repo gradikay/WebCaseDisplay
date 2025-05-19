@@ -229,6 +229,31 @@
                 
                 // Observe the item
                 observer.observe(item);
+                
+                // Add touch response for mobile devices
+                const card = item.querySelector('.card');
+                if (card) {
+                    // Touch start - simulate hover effect on touch
+                    card.addEventListener('touchstart', function() {
+                        this.classList.add('touch-active');
+                        const cardImage = this.querySelector('.card-image img');
+                        if (cardImage) {
+                            cardImage.style.transform = 'scale(1.05)';
+                        }
+                    });
+                    
+                    // Touch end - remove hover effect
+                    card.addEventListener('touchend', function() {
+                        this.classList.remove('touch-active');
+                        // Keep the scale effect briefly before removing it
+                        setTimeout(() => {
+                            const cardImage = this.querySelector('.card-image img');
+                            if (cardImage && !this.matches(':hover')) {
+                                cardImage.style.transform = '';
+                            }
+                        }, 300);
+                    });
+                }
             });
         }
     }
