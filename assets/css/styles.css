@@ -236,6 +236,13 @@ img {
     font-weight: 700;
     color: var(--color-primary);
     margin: 0;
+    transition: transform 0.5s ease;
+}
+
+.card:hover .card-header h3,
+.card.touch-active .card-header h3 {
+    transform: translateX(5px) translateY(-2px);
+    color: var(--color-accent);
 }
 
 .card-date {
@@ -264,11 +271,51 @@ img {
     border-radius: var(--border-radius-sm);
     font-size: var(--font-size-xs);
     font-weight: 500;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.card:hover .tech-badge,
+.card.touch-active .tech-badge {
+    animation: tagPulse 1.5s infinite;
+    background-color: var(--color-accent);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.card:hover .tech-badge:nth-child(2),
+.card.touch-active .tech-badge:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.card:hover .tech-badge:nth-child(3),
+.card.touch-active .tech-badge:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes tagPulse {
+    0% {
+        transform: translateY(-2px) scale(1);
+        box-shadow: 0 0 0 rgba(9, 132, 227, 0);
+    }
+    50% {
+        transform: translateY(-4px) scale(1.05);
+        box-shadow: 0 3px 8px rgba(9, 132, 227, 0.3);
+    }
+    100% {
+        transform: translateY(-2px) scale(1);
+        box-shadow: 0 0 0 rgba(9, 132, 227, 0);
+    }
 }
 
 .tech-badge.more {
     background-color: rgba(9, 132, 227, 0.05);
     color: var(--color-secondary);
+}
+
+.card:hover .tech-badge.more,
+.card.touch-active .tech-badge.more {
+    background-color: rgba(9, 132, 227, 0.3);
+    animation-delay: 0.6s;
 }
 
 /* Showcase Page */
