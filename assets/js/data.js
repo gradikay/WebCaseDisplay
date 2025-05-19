@@ -15,23 +15,20 @@ const SHOWCASE_WEBSITES = [
             "created": "May 10, 2025",
             "technologies": ["HTML", "CSS", "JavaScript"],
             "organization": "Artivico",
-            "type": "Documentation",
+            "type": "Restaurant"
         }
     },
     {
         "id": 2,
-        "title": "Wikipedia",
-        "description": "Online encyclopedia with millions of articles",
-        "url": "https://en.wikipedia.org/wiki/Main_Page",
-        "thumbnail": "assets/images/thumbnails/wikipedia.svg",
+        "title": "Nail Nova",
+        "description": "Complete Nail Salon Website Template with orange and pink Theme",
+        "url": "https://gradikay.github.io/NailNova/",
+        "thumbnail": "assets/images/nailnova.webp",
         "metadata": {
-            "created": "January 15, 2001",
-            "technologies": ["PHP", "MySQL", "JavaScript", "MediaWiki"],
-            "organization": "Wikimedia Foundation",
-            "type": "Online Encyclopedia",
-            "monthly_visitors": "1.5 billion+",
-            "articles": "6.5 million+ (English)",
-            "languages_supported": 300
+            "created": "May 19, 2025",
+            "technologies": ["HTML", "CSS", "JavaScript"],
+            "organization": "Artivico",
+            "type": "Nail Salon"
         }
     },
     {
