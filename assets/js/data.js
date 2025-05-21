@@ -56,5 +56,18 @@ const SHOWCASE_WEBSITES = [
                 "organization": "Artivico",
                 "type": "Nail Salon"
         }
+    },
+    {
+        "id": 5,
+        "title": "Elegant Hair Studio",
+        "description": "Transforming hair into works of art",
+        "url": "https://gradikay.github.io/ElegantHairStudio/",
+        "thumbnail": "assets/images/ElegantHairStudio.webp",
+        "metadata": {
+            "created": "May 21, 2025",
+            "technologies": ["HTML", "CSS", "JavaScript"],
+            "organization": "Artivico",
+            "type": "Hair Salon"
+        }
     }
 ];
