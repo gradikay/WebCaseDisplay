@@ -69,5 +69,18 @@ const SHOWCASE_WEBSITES = [
             "organization": "Artivico",
             "type": "Hair Salon"
         }
+    },
+    {
+        "id": 6,
+        "title": "Neon Fluencer",
+        "description": "Complete Influencer Landing Page Template with Black Theme",
+        "url": "https://gradikay.github.io/NeonFluencer/",
+        "thumbnail": "assets/images/neonfluencer.webp",
+        "metadata": {
+            "created": "May 21, 2025",
+            "technologies": ["HTML", "CSS", "JavaScript"],
+            "organization": "Artivico",
+            "type": "Influencer"
+        }
     }
 ];
