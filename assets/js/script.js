@@ -138,11 +138,6 @@
                         <div class="metadata-value">${website.metadata.type}</div>
                     </div>
                     
-                    <!-- Monthly Visitors -->
-                    <div class="metadata-item">
-                        <div class="metadata-label">Monthly Visitors</div>
-                        <div class="metadata-value">${website.metadata.monthly_visitors}</div>
-                    </div>
                     
                     ${website.metadata.languages_supported ? `
                     <div class="metadata-item">
