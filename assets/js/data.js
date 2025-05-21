@@ -14,7 +14,7 @@ const SHOWCASE_WEBSITES = [
         "metadata": {
             "created": "May 10, 2025",
             "technologies": ["HTML", "CSS", "JavaScript"],
-            "organization": "Artivico",
+            "organization": "ArtivicoLab",
             "type": "Jamaican Restaurant"
         }
     },
@@ -27,7 +27,7 @@ const SHOWCASE_WEBSITES = [
         "metadata": {
             "created": "May 19, 2025",
             "technologies": ["HTML", "CSS", "JavaScript"],
-            "organization": "Artivico",
+            "organization": "ArtivicoLab",
             "type": "Nail Salon"
         }
     },
@@ -40,7 +40,7 @@ const SHOWCASE_WEBSITES = [
         "metadata": {
             "created": "May 10, 2025",
             "technologies": ["HTML", "CSS", "JavaScript"],
-            "organization": "Artivico",
+            "organization": "ArtivicoLab",
             "type": "Jamaican Restaurant"
         }
     },
@@ -53,7 +53,7 @@ const SHOWCASE_WEBSITES = [
         "metadata": {
             "created": "May 19, 2025",
                 "technologies": ["HTML", "CSS", "JavaScript"],
-                "organization": "Artivico",
+                "organization": "ArtivicoLab",
                 "type": "Nail Salon"
         }
     },
@@ -66,7 +66,7 @@ const SHOWCASE_WEBSITES = [
         "metadata": {
             "created": "May 21, 2025",
             "technologies": ["HTML", "CSS", "JavaScript"],
-            "organization": "Artivico",
+            "organization": "ArtivicoLab",
             "type": "Hair Salon"
         }
     },
@@ -79,7 +79,7 @@ const SHOWCASE_WEBSITES = [
         "metadata": {
             "created": "May 21, 2025",
             "technologies": ["HTML", "CSS", "JavaScript"],
-            "organization": "Artivico",
+            "organization": "ArtivicoLab",
             "type": "Influencer"
         }
     }
