@@ -60,7 +60,7 @@ const SHOWCASE_WEBSITES = [
     {
         "id": 5,
         "title": "Elegant Hair Studio",
-        "description": "Transforming hair into works of art",
+        "description": "Complete Hair Salon Landing Page Template with Yellow and Orange Theme",
         "url": "https://gradikay.github.io/ElegantHairStudio/",
         "thumbnail": "assets/images/ElegantHairStudio.webp",
         "metadata": {
