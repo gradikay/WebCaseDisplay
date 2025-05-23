@@ -32,7 +32,12 @@
             <h1>Contact Us</h1>
             <p class="contact-intro">Have questions or inquiries? We'd love to hear from you!</p>
             
-            <form id="contact-form" class="contact-form" action="#" method="POST">
+            <form id="contact-form" class="contact-form" action="https://formsubmit.co/contact@artivicolab.com" method="POST">
+                <!-- FormSubmit configuration -->
+                <input type="hidden" name="_next" value="https://artivicolab.replit.app/contact.html">
+                <input type="hidden" name="_subject" value="New Contact Form Submission">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_captcha" value="true">
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" required>
